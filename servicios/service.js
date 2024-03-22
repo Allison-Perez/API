@@ -6,7 +6,7 @@ const cors = require('cors');
 const crypto = require('crypto');
 
 const app = express();
-const port = process.env.port || 5000;
+// const port = process.env.port || 3306;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 const dbConfig = {
   host: "82.180.153.103",
   user: "u214519598_acanner",
+  port:"3306",
   password: "111019As",
   database: "u214519598_acanner",
 };
