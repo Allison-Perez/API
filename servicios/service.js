@@ -6,7 +6,7 @@ const cors = require('cors');
 const crypto = require('crypto');
 
 const app = express();
-// const port = process.env.port || 3306;
+const port = process.env.port || 3306;
 
 app.use(cors());
 app.use(bodyParser.json());
