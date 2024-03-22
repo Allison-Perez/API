@@ -16,7 +16,7 @@ const dbConfig = {
   user: "u214519598_acanner",
   password: "111019As",
   database: "u214519598_acanner",
-};
+}
 
 
 function generarContrasenaTemporal() {
