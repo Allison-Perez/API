@@ -104,11 +104,12 @@ app.post("/registro", async (req, res) => {
       2
     ]);
 
+
     connection.end();
     res.status(201).json({ message: "Usuario creado exitosamente" });
   } catch (error) {
     console.error("Error al insertar el registro:", error);
-    res.status(500).json({ error: "Error al insertar el registro" });
+    res.status(500).json({ error: "Error al insertar el registro", message: error.message });
   }
 });
 
