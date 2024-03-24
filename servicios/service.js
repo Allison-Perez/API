@@ -27,6 +27,11 @@ function generarContrasenaTemporal() {
     .slice(0, longitud);
 }
 
+
+app.get("/saludo", (req, res) => {
+  res.status(200).json({ message: "Hola mundo" });
+});
+
 // LOGEO
 
 app.post("/login", async (req, res) => {
