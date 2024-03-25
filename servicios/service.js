@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 const { log } = require("console");
 const app = express();
-const port = process.env.port || 3306;
+const port = process.env.port || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -73,7 +73,7 @@ app.post("/registro", async (req, res) => {
       idPregunta,
       respuestaPregunta,
       2,
-      'http://localhost:3000/uploads/sena.png',
+      'https://backend-acanner.onrender.com/uploads/sena.png',
     ]);
 
     console.log("Usuario creado exitosamente");
@@ -993,7 +993,7 @@ app.post('/api/cambiar-foto', upload.single('imagen'), async (req, res) => {
       return res.status(400).json({ error: 'No se proporcionó ninguna imagen.' });
     }
 
-    const nuevaUrl = `http://localhost:3000/uploads/${nuevaImagen.filename}`;
+    const nuevaUrl = `https://backend-acanner.onrender.com/uploads/${nuevaImagen.filename}`;
 
     console.log('Nueva URL generada:', nuevaUrl);
 
@@ -1093,9 +1093,9 @@ app.post("/crearBlog", upload.single('imagenOpcional'), async (req, res) => {
     let urlImagen = '';
 
     if (req.file) {
-      urlImagen = 'http://localhost:3000/' + req.file.path;
+      urlImagen = 'https://backend-acanner.onrender.com/' + req.file.path;
     } else {
-      urlImagen = 'http://localhost:3000/uploads/Blog.png';
+      urlImagen = 'https://backend-acanner.onrender.com/uploads/Blog.png';
     }
 
     const connection = await mysql.createConnection(dbConfig);
@@ -1897,5 +1897,5 @@ app.get("/api/asistenciasPorcorreo/:correo", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Servidor en ejecución en http://localhost:${port}`);
+  console.log(`Servidor en ejecución en https://backend-acanner.onrender.com:${port}`);
 });
