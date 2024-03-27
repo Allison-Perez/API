@@ -968,7 +968,7 @@ const storage = multer.diskStorage({
   }
 });
 
-app.use(express.static(path.join(__dirname, 'proyecto/assets/uploads')));
+app.use('/uploads', express.static('proyecto/assets/uploads'));
 
 const upload = multer({ storage: storage }); 
 
