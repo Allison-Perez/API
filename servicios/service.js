@@ -14,9 +14,6 @@ const port = process.env.port || 3306;
 app.use(cors());
 app.use(bodyParser.json());
 
-
-https://backend-acanner.onrender.com
-
 const dbConfig = {
   host: "82.180.153.103",
   user: "u214519598_acanner",
@@ -971,8 +968,7 @@ const storage = multer.diskStorage({
   }
 });
 
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(express.static(path.join(__dirname, 'proyecto/assets/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const upload = multer({ storage: storage }); 
 
