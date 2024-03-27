@@ -34,7 +34,10 @@ function generarContrasenaTemporal() {
 app.post("/registro", async (req, res) => {
   try {
     const connection = await mysql.createConnection(dbConfig);
+
     console.log("Datos del cuerpo de la solicitud:", req.body);
+
+
     const {
       primerNombre,
       primerApellido,
@@ -52,6 +55,7 @@ app.post("/registro", async (req, res) => {
 
     const passwordEncriptado = await bcrypt.hash(password, 10);
     console.log("Contraseña encriptada:", passwordEncriptado);
+
 
     const sql = `INSERT INTO usuario (primerNombre , primerApellido, tipoDocumento, fechaNacimiento, correo, segundoNombre, segundoApellido, documento, password, idPregunta, respuestaPregunta, idRol, fotoPerfil )
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)`;
@@ -351,6 +355,7 @@ app.post("/api/cambiar-contrasena", async (req, res) => {
   }
 });
 
+
 // ADMIN LISTA USUARIOS
 
 app.get("/api/usuarios", async (req, res) => {
@@ -583,6 +588,7 @@ app.get('/api/instructores', async (req, res) => {
   }
 });
 
+
 // Agregar ficha a un instructor
 app.post('/api/asignar-ficha', async (req, res) => {
   try {
@@ -612,6 +618,7 @@ app.post('/api/asignar-ficha', async (req, res) => {
     res.status(500).json({ error: 'Error al asignar la ficha al usuario' });
   }
 });
+
 
 // DONA INSTRUCTORES FICHAS
 
@@ -645,6 +652,7 @@ app.get('/api/fichasInstructores', async (req, res) => {
   }
 });
 
+
 // ESTADISTICAS ANTIGUEDAD
 
 app.get('/api/antiguedadInstructores', async (req, res) => {
@@ -674,6 +682,7 @@ app.get('/api/antiguedadInstructores', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener datos de instructores' });
   }
 });
+
 
 // ESTADISTICAS CANTIDAD DE BLOGS
 
@@ -794,6 +803,7 @@ app.get("/api/promedioEdades", async (req, res) => {
     res.status(500).json({ error: "Error al obtener la distribución de edades" });
   }
 });
+
 
 // ESTADISTICAS POR FICHAS
 
@@ -1243,7 +1253,7 @@ app.post('/crearHorario', upload.single('archivo'), async (req, res) => {
     let urlArchivo = '';
 
     if (req.file) {
-      urlArchivo = 'uploads/' + req.file.filename;
+      urlArchivo = '/uploads/' + req.file.filename;
     } else {
       return res.status(400).json({ error: 'El archivo es obligatorio' });
     }
@@ -1322,7 +1332,7 @@ app.post('/crearActividad', upload.single('archivo'), async (req, res) => {
     let urlArchivo = '';
 
     if (req.file) {
-      urlArchivo = 'uploads/' + req.file.filename;
+      urlArchivo = '/uploads/' + req.file.filename;
     } else {
       return res.status(400).json({ error: 'El archivo es obligatorio' });
     }
